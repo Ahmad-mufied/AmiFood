@@ -39,7 +39,7 @@ class MasonryGridTile extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
