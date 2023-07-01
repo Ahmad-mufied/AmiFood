@@ -7,10 +7,10 @@ import 'package:amifood/pages/cart_page.dart';
 
 class Routes {
   static final Map<String, WidgetBuilder> routes = {
-    '/': (context) => ShopPage(),
-    '/login': (context) => LoginPage(),
-    '/cart': (context) => CartPage(),
-    '/order': (context) => OrderPage(),
-    '/profil': (context) => ProfilPage(),
+    '/': (context) => const ShopPage(),
+    '/login': (context) => const LoginPage(),
+    '/cart': (context) => const CartPage(),
+    '/order': (context) => const OrderPage(),
+    '/profil': (context) => const ProfilPage(),
   };
 }

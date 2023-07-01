@@ -30,43 +30,52 @@ class _HomePageState extends State<HomePage> {
 
   // pages
   final List<Widget> _pages = [
-    ShopPage(),
-    CartPage(),
-    OrderPage(),
-    ProfilPage(),
+    const ShopPage(),
+    const CartPage(),
+    const OrderPage(),
+    const ProfilPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      body: PageView(
-        controller: _pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: List.generate(_pages.length, (index) => _pages[index]),
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            tileMode: TileMode.clamp,
+            colors: backgrouundColor,
+          ),
+        ),
+      child: Scaffold(
+        body: PageView(
+          controller: _pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: List.generate(_pages.length, (index) => _pages[index]),
+        ),
+        extendBody: true,
+        bottomNavigationBar: (_pages.length <= maxCount)
+            ? AnimatedNotchBottomBar(
+                /// Provide NotchBottomBarController
+                notchBottomBarController: _controller,
+                color: Colors.white,
+                showLabel: false,
+                notchColor: Colors.grey.shade300,
+    
+                /// restart app if you change removeMargins
+                removeMargins: false,
+                bottomBarWidth: 500,
+                durationInMilliSeconds: 500,
+                bottomBarItems:  bottomBarItems,
+                onTap: (index) {
+                  /// perform action on tab change and to update pages you can update pages without pages
+                  _pageController.animateToPage(index,
+                      duration: const Duration(microseconds: 500),
+                      curve: Curves.bounceInOut);
+                },
+              )
+            : null,
       ),
-      extendBody: true,
-      bottomNavigationBar: (_pages.length <= maxCount)
-          ? AnimatedNotchBottomBar(
-              /// Provide NotchBottomBarController
-              notchBottomBarController: _controller,
-              color: Colors.white,
-              showLabel: false,
-              notchColor: Colors.grey.shade300,
-
-              /// restart app if you change removeMargins
-              removeMargins: false,
-              bottomBarWidth: 500,
-              durationInMilliSeconds: 500,
-              bottomBarItems:  bottomBarItems,
-              onTap: (index) {
-                /// perform action on tab change and to update pages you can update pages without pages
-                _pageController.animateToPage(index,
-                    duration: const Duration(microseconds: 500),
-                    curve: Curves.bounceInOut);
-              },
-            )
-          : null,
     );
   }
 }
