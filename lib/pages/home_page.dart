@@ -40,13 +40,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            tileMode: TileMode.clamp,
-            colors: backgrouundColor,
-          ),
+        gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          tileMode: TileMode.clamp,
+          colors: backgrouundColor,
         ),
+      ),
       child: Scaffold(
         body: PageView(
           controller: _pageController,
@@ -61,16 +61,16 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
                 showLabel: false,
                 notchColor: Colors.grey.shade300,
-    
+
                 /// restart app if you change removeMargins
                 removeMargins: false,
                 bottomBarWidth: 500,
-                durationInMilliSeconds: 500,
-                bottomBarItems:  bottomBarItems,
+                durationInMilliSeconds: 200,
+                bottomBarItems: bottomBarItems,
                 onTap: (index) {
                   /// perform action on tab change and to update pages you can update pages without pages
                   _pageController.animateToPage(index,
-                      duration: const Duration(microseconds: 500),
+                      duration: const Duration(microseconds: 300),
                       curve: Curves.bounceInOut);
                 },
               )
